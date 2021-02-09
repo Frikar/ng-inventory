@@ -37,7 +37,7 @@ export class ProductService {
   }, {
     id: generateId(),
     name: 'Poco X3 NFC',
-    active: false,
+    active: true,
     description: 'Brand New',
     expirationDate: '30/04/2022',
     type: 'mobile'
@@ -67,7 +67,7 @@ export class ProductService {
     }, {
       id: generateId(),
       name: 'Amazon Fire 10 HD',
-      active: false,
+      active: true,
       description: 'Used - Very Good',
       expirationDate: '15/06/2021',
       type: 'tablet'
@@ -81,7 +81,7 @@ export class ProductService {
     }, {
       id: generateId(),
       name: 'Lenovo Legion',
-      active: false,
+      active: true,
       description: 'Used - Like Brand New',
       expirationDate: '22/11/2021',
       type: 'laptop'
@@ -93,6 +93,17 @@ export class ProductService {
       expirationDate: '14/08/2021',
       type: 'monitor'
     }];
+
+  products$ = new BehaviorSubject<IProduct[]>(this.products);
+
+  removeProduct(product){
+    const index = this.products.indexOf(product);
+    this.products = [
+      ...this.products.slice(0, index),
+      ...this.products.slice(index + 1),
+    ];
+    this.products$.next(this.products);
+  }
 
   constructor() {
   }
