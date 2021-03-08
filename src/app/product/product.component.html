@@ -5,8 +5,21 @@
     <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
     <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
-    <clr-wizard-page>
+    <clr-wizard-page style="overflow-y: hidden !important">
       <ng-template clrPageTitle>Select Device</ng-template>
+      <div class="clr-row devices">
+        <div class="clr-col-md-6" *ngFor="let item of deviceTypes">
+          <a href="javascript:void(0)" class="card clickable"
+             (click)="selectDevice(item)" [ngClass]="{'active': item.icon === deviceType}">
+            <div class="card-block">
+              <p class="card-text">
+                {{item.name}}
+                <cds-icon shape="{{item.icon}}"></cds-icon>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
     </clr-wizard-page>
     <clr-wizard-page>
       <ng-template clrPageTitle>Basic Info</ng-template>

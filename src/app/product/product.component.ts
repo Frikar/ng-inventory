@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class ProductComponent implements OnInit {
   productForm: FormGroup;
   @Input() product;
+  test = 'home';
   deviceType = 'tablet';
   deviceTypes = [{
     name: 'Tablet',
