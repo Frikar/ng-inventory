@@ -30,12 +30,16 @@
           <input clrInput type="text" id="product-name"
                  placeholder="Iphone X..." formControlName="">
         </clr-input-container>
-        <clr-input-container>
-          <div class="toggle-switch">
-            <input type="checkbox" id="active" formControlName="active">
-            <label for="active">Active</label>
-          </div>
-        </clr-input-container>
+        <clr-toggle-container class="clr-toggle-right">
+          <clr-toggle-wrapper>
+            <input type="checkbox" clrToggle id="active" value="{{true}}" formControlName="active" />
+            <label for="active" style="padding-top: 0;">Active</label>
+          </clr-toggle-wrapper>
+        </clr-toggle-container>
+<!--          <div class="toggle-switch">-->
+<!--            <input type="checkbox" id="active" formControlName="active">-->
+<!--            <label for="active">Active</label>-->
+<!--          </div>-->
         <clr-textarea-container>
           <label for="description">Product Description</label>
           <textarea clrTextarea id="description" placeholder="Enter description here..."
@@ -50,6 +54,9 @@
     </clr-wizard-page>
     <clr-wizard-page>
       <ng-template clrPageTitle>Expiration Info</ng-template>
+      <clr-date-container formGroupName="expiration">
+        <input type="date" clrDate name="expirationDate" formGroupName="expirationDate" />
+      </clr-date-container>
     </clr-wizard-page>
   </clr-wizard>
 </form>
